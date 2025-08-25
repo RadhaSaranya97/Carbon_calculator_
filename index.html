@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Household Carbon Footprint Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Link to CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Chart.js and plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>🏠 Household Carbon Footprint Calculator</h2>
+
+    <p>Understand your household's environmental impact! This calculator estimates your monthly carbon emissions from various activities.</p>
+    <p>Knowing your carbon footprint is the first step towards a greener lifestyle. Let's start measuring!</p>
+
+    <div class="suggestion-box" id="randomSuggestion">
+        <p>💡 Tip: Switch to LED lights to significantly reduce your electricity consumption!</p>
+    </div>
+
+    <label for="electricity">Electricity Usage (kWh per month)</label>
+    <input type="number" id="electricity" placeholder="e.g. 200" min="0">
+
+    <label for="lpg">LPG Usage (No. of Cylinders per month)</label>
+    <input type="number" id="lpg" placeholder="e.g. 1" min="0">
+
+    <label for="waste">Waste Generated (kg per month)</label>
+    <input type="number" id="waste" placeholder="e.g. 50" min="0">
+        
+    <label for="water">Water Usage (liters per month)</label>
+    <input type="number" id="water" placeholder="e.g. 400" min="0">
+
+    <label for="vehicle">Vehicle Type</label>
+    <select id="vehicle">
+        <option value="0">None</option>
+        <option value="0.171">Car (Diesel, Medium)</option>
+        <option value="0.192">Car (Petrol, Medium)</option>
+        <option value="0.103">Motorbike (Small)</option>
+        <option value="0.089">Bus</option>
+    </select>
+
+    <label for="distance">Distance Driven (km per month)</label>
+    <input type="number" id="distance" placeholder="e.g. 100" min="0">
+
+    <button onclick="calculateHouseholdEmissions()">Calculate Total Emissions</button>
+
+    <div class="result-section" id="resultBox">
+        <h3>Your Estimated Monthly Carbon Emissions</h3>
+        <div class="result-item"><span>Electricity:</span> <span id="eleCO2">0.00</span> kg CO2</div>
+        <div class="result-item"><span>LPG:</span> <span id="lpgCO2">0.00</span> kg CO2</div>
+        <div class="result-item"><span>Waste:</span> <span id="wasteCO2">0.00</span> kg CO2</div>
+        <div class="result-item"><span>Water:</span> <span id="waterCO2">0.00</span> kg CO2</div>
+        <div class="result-item"><span>Vehicle:</span> <span id="vehicleCO2">0.00</span> kg CO2</div>
+
+        <div class="total-result">
+            Total Carbon Footprint: <span id="totalCO2">0.00</span> kg CO2
+        </div>
+
+        <div class="chart-container">
+            <h3>Emission Breakdown</h3>
+            <canvas id="emissionChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<!-- Link to JS -->
+<script src="script.js"></script>
+</body>
+</html>
